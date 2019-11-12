@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{categoria.linea}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ 	<ion-grid>
+ 		<ion-row *ngFor="let pares of _ps.por_categoria">
+ 			<ion-col *ngFor="let item of pares" (click)="irDetalle(item)">
+ 				<img [src]="item.codigo | imagen">
+	 			<p>
+	 				{{item.producto}}
+	 				<br>
+	 				{{item.precio_compra | currency:'USD':true}}
+	 			</p>
+ 			</ion-col>
+
+ 		</ion-row>
+ 	</ion-grid>
+
+ 	<ion-infinite-scroll (ionInfinite)="siguiente_pagina($event)"
+ 		[enabled]="hayMas">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+ 	</ion-infinite-scroll>
+
+</ion-content>
